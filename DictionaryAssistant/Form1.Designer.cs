@@ -35,6 +35,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.indicatorCurrentLetter = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.alphabetSelector = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,7 +76,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -83,25 +84,26 @@
             // 
             this.closeToolStripMenuItem.Enabled = false;
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(109, 6);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.indicatorCurrentLetter);
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.alphabetSelector);
             this.flowLayoutPanel1.Controls.Add(this.label2);
@@ -117,13 +119,25 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.MinimumSize = new System.Drawing.Size(755, 426);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(755, 426);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(755, 468);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // indicatorCurrentLetter
+            // 
+            this.indicatorCurrentLetter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.indicatorCurrentLetter.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.indicatorCurrentLetter.Location = new System.Drawing.Point(12, 8);
+            this.indicatorCurrentLetter.Margin = new System.Windows.Forms.Padding(12, 8, 3, 0);
+            this.indicatorCurrentLetter.Name = "indicatorCurrentLetter";
+            this.indicatorCurrentLetter.Padding = new System.Windows.Forms.Padding(4, 8, 4, 4);
+            this.indicatorCurrentLetter.Size = new System.Drawing.Size(64, 64);
+            this.indicatorCurrentLetter.TabIndex = 12;
+            this.indicatorCurrentLetter.Text = " ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(82, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(4);
             this.label1.Size = new System.Drawing.Size(160, 21);
@@ -133,9 +147,9 @@
             // alphabetSelector
             // 
             this.alphabetSelector.FormattingEnabled = true;
-            this.alphabetSelector.Location = new System.Drawing.Point(169, 3);
+            this.alphabetSelector.Location = new System.Drawing.Point(248, 3);
             this.alphabetSelector.Name = "alphabetSelector";
-            this.alphabetSelector.Size = new System.Drawing.Size(280, 21);
+            this.alphabetSelector.Size = new System.Drawing.Size(201, 21);
             this.alphabetSelector.TabIndex = 1;
             this.alphabetSelector.SelectedIndexChanged += new System.EventHandler(this.alphabetSelector_SelectedIndexChanged);
             // 
@@ -166,7 +180,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(464, 27);
+            this.label3.Location = new System.Drawing.Point(464, 72);
             this.label3.Margin = new System.Windows.Forms.Padding(464, 0, 3, 0);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(4);
@@ -179,7 +193,7 @@
             this.indicatorWordsEnd.AutoSize = true;
             this.flowLayoutPanel1.SetFlowBreak(this.indicatorWordsEnd, true);
             this.indicatorWordsEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.indicatorWordsEnd.Location = new System.Drawing.Point(708, 27);
+            this.indicatorWordsEnd.Location = new System.Drawing.Point(708, 72);
             this.indicatorWordsEnd.Margin = new System.Windows.Forms.Padding(76, 0, 3, 0);
             this.indicatorWordsEnd.Name = "indicatorWordsEnd";
             this.indicatorWordsEnd.Padding = new System.Windows.Forms.Padding(4);
@@ -190,7 +204,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(464, 48);
+            this.label4.Location = new System.Drawing.Point(464, 93);
             this.label4.Margin = new System.Windows.Forms.Padding(464, 0, 3, 0);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(4);
@@ -203,7 +217,7 @@
             this.indicatorAverageChars.AutoSize = true;
             this.flowLayoutPanel1.SetFlowBreak(this.indicatorAverageChars, true);
             this.indicatorAverageChars.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.indicatorAverageChars.Location = new System.Drawing.Point(708, 48);
+            this.indicatorAverageChars.Location = new System.Drawing.Point(708, 93);
             this.indicatorAverageChars.Name = "indicatorAverageChars";
             this.indicatorAverageChars.Padding = new System.Windows.Forms.Padding(4);
             this.indicatorAverageChars.Size = new System.Drawing.Size(22, 21);
@@ -213,7 +227,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(90, 93);
+            this.label6.Location = new System.Drawing.Point(90, 138);
             this.label6.Margin = new System.Windows.Forms.Padding(90, 24, 3, 0);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(4);
@@ -226,7 +240,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.flowLayoutPanel1.SetFlowBreak(this.label7, true);
-            this.label7.Location = new System.Drawing.Point(435, 93);
+            this.label7.Location = new System.Drawing.Point(435, 138);
             this.label7.Margin = new System.Windows.Forms.Padding(180, 24, 3, 0);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(4);
@@ -237,7 +251,7 @@
             // listBoxShortestWords
             // 
             this.listBoxShortestWords.FormattingEnabled = true;
-            this.listBoxShortestWords.Location = new System.Drawing.Point(24, 117);
+            this.listBoxShortestWords.Location = new System.Drawing.Point(24, 162);
             this.listBoxShortestWords.Margin = new System.Windows.Forms.Padding(24, 3, 3, 3);
             this.listBoxShortestWords.Name = "listBoxShortestWords";
             this.listBoxShortestWords.Size = new System.Drawing.Size(307, 303);
@@ -246,7 +260,7 @@
             // listBoxLongestWords
             // 
             this.listBoxLongestWords.FormattingEnabled = true;
-            this.listBoxLongestWords.Location = new System.Drawing.Point(358, 117);
+            this.listBoxLongestWords.Location = new System.Drawing.Point(358, 162);
             this.listBoxLongestWords.Margin = new System.Windows.Forms.Padding(24, 3, 3, 3);
             this.listBoxLongestWords.Name = "listBoxLongestWords";
             this.listBoxLongestWords.Size = new System.Drawing.Size(307, 303);
@@ -257,10 +271,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(755, 450);
+            this.ClientSize = new System.Drawing.Size(755, 502);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -294,6 +310,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBoxShortestWords;
         private System.Windows.Forms.ListBox listBoxLongestWords;
+        private System.Windows.Forms.Label indicatorCurrentLetter;
     }
 }
 

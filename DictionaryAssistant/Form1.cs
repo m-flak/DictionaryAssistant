@@ -149,25 +149,28 @@ namespace DictionaryAssistant
 
         private void alphabetSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!this.formData.DictionaryLoaded)
-            {
-                return;
-            }
-
             ComboBox theSelector = (ComboBox)sender;
-            DictionaryLetter newLetter = this.formData.GetDictionaryLetter(theSelector.GetItemText(theSelector.SelectedItem)[0]);
-            
-            this.indicatorWordsBegin.Text = $"{newLetter.NumberWordsBeginningWith}";
-            this.indicatorWordsEnd.Text = $"{newLetter.NumberWordsEndingWith}";
-            this.indicatorAverageChars.Text = $"{newLetter.AverageCharacterCount}";
+            string letterString = theSelector.GetItemText(theSelector.SelectedItem);
 
-            // Clear the list boxes before populating them
-            ClearListBoxOfWords(this.listBoxLongestWords);
-            ClearListBoxOfWords(this.listBoxShortestWords);
+            this.indicatorCurrentLetter.Text = letterString.ToUpper();
 
-            // Populate the list boxes
-            PopulateListBoxWithWords(this.listBoxLongestWords, () => newLetter.GetLongestWords());
-            PopulateListBoxWithWords(this.listBoxShortestWords, () => newLetter.GetShortestWords());
+            if (this.formData.DictionaryLoaded)
+            {
+                // Get actual data for current label
+                DictionaryLetter newLetter = this.formData.GetDictionaryLetter(letterString[0]);
+
+                this.indicatorWordsBegin.Text = $"{newLetter.NumberWordsBeginningWith}";
+                this.indicatorWordsEnd.Text = $"{newLetter.NumberWordsEndingWith}";
+                this.indicatorAverageChars.Text = $"{newLetter.AverageCharacterCount}";
+
+                // Clear the list boxes before populating them
+                ClearListBoxOfWords(this.listBoxLongestWords);
+                ClearListBoxOfWords(this.listBoxShortestWords);
+
+                // Populate the list boxes
+                PopulateListBoxWithWords(this.listBoxLongestWords, () => newLetter.GetLongestWords());
+                PopulateListBoxWithWords(this.listBoxShortestWords, () => newLetter.GetShortestWords());
+            }
         }
     }
 }
