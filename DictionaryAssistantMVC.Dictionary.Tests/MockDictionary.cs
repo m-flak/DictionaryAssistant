@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DictionaryAssistant.Dictionary;
-using DictionaryAssistant.Exceptions;
+using DictionaryAssistantMVC.Dictionary;
+using DictionaryAssistantMVC.Dictionary.Exceptions;
 
-namespace DictionaryAssistant.Tests
+namespace DictionaryAssistantMVC.Dictionary.Tests
 {
     public class MockDictionary : IWordDictionary
     {
@@ -24,9 +24,21 @@ namespace DictionaryAssistant.Tests
             "standstill"
         };
 
+        private readonly string[] mockWords;
+
+        public MockDictionary()
+        {
+            mockWords = MockDictionary.Words;
+        }
+
+        public MockDictionary(string[] wordsToUse)
+        {
+            mockWords = wordsToUse;
+        }
+
         public List<string> GetDictionaryWords()
         {
-            return new List<string>(MockDictionary.Words);
+            return new List<string>(mockWords);
         }
 
         public List<string> GetDictionaryWordsEndingWith(char letter)

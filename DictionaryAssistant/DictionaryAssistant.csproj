@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dictionary\ActiveDictionary.cs" />
-    <Compile Include="Dictionary\Alphabet.cs" />
-    <Compile Include="Dictionary\DictionaryLetter.cs" />
-    <Compile Include="Dictionary\IWordDictionary.cs" />
-    <Compile Include="Exceptions\WordEndingNotFoundException.cs" />
-    <Compile Include="Exceptions\WordStartingNotFoundException.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DictionaryAssistantMVC.Dictionary\DictionaryAssistantMVC.Dictionary.csproj">
+      <Project>{0928db12-24ab-4976-95b4-5aa30415c555}</Project>
+      <Name>DictionaryAssistantMVC.Dictionary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

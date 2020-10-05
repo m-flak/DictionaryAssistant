@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>DictionaryAssistantMVC.Dictionary</RootNamespace>
+    <AssemblyName>DictionaryAssistantMVC.Dictionary</AssemblyName>
+  </PropertyGroup>
+
+</Project>

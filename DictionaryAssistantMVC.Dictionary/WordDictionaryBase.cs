@@ -1,33 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using DictionaryAssistant.Exceptions;
+using DictionaryAssistantMVC.Dictionary.Exceptions;
 
-namespace DictionaryAssistant.Dictionary
+
+namespace DictionaryAssistantMVC.Dictionary
 {
-    public class ActiveDictionary : IWordDictionary
+    public abstract class WordDictionaryBase : IWordDictionary
     {
         private readonly List<string> allDictionaryWords;
         private readonly Dictionary<char, List<String>> wordsEndingWith;
         private readonly Dictionary<char, List<String>> wordsStartingWith;
 
-        public ActiveDictionary(List<string> allDictionaryWords)
+        public WordDictionaryBase(List<string> allDictionaryWords)
         {
             this.allDictionaryWords = allDictionaryWords;
             wordsEndingWith = new Dictionary<char, List<string>>();
             wordsStartingWith = new Dictionary<char, List<string>>();
         }
 
+        /* Abstract Methods */
+
+        public abstract DictionaryLetter GetDictionaryLetter(char letter);
+
+        public abstract ICollection<DictionaryLetter> GetAllDictionaryLetters();
+
         /* Implements IWordDictionary: */
 
-        public List<string> GetDictionaryWords()
+        public virtual List<string> GetDictionaryWords()
         {
             return allDictionaryWords;
         }
 
-        public List<string> GetDictionaryWordsEndingWith(char letter)
+        public virtual List<string> GetDictionaryWordsEndingWith(char letter)
         {
             if (!wordsEndingWith.ContainsKey(letter))
             {
@@ -37,7 +42,7 @@ namespace DictionaryAssistant.Dictionary
             return wordsEndingWith[letter];
         }
 
-        public List<string> GetDictionaryWordsStartingWith(char letter)
+        public virtual List<string> GetDictionaryWordsStartingWith(char letter)
         {
             if (!wordsStartingWith.ContainsKey(letter))
             {
@@ -47,12 +52,12 @@ namespace DictionaryAssistant.Dictionary
             return wordsStartingWith[letter];
         }
 
-        public void SaveWordsForLettersEnding(char letter, List<string> words)
+        public virtual void SaveWordsForLettersEnding(char letter, List<string> words)
         {
             wordsEndingWith[letter] = words;
         }
 
-        public void SaveWordsForLetterStarting(char letter, List<string> words)
+        public virtual void SaveWordsForLetterStarting(char letter, List<string> words)
         {
             wordsStartingWith[letter] = words;
         }

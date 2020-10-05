@@ -8,8 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DictionaryAssistant.Dictionary;
+using DictionaryAssistantMVC.Dictionary;
 using DictionaryAssistant.Properties;
+using DictionaryAssistantMVC.Dictionary.Loader;
 
 namespace DictionaryAssistant
 {
@@ -18,47 +19,23 @@ namespace DictionaryAssistant
         private class FormData
         {
             private readonly Dictionary<char, DictionaryLetter> letterData = new Dictionary<char, DictionaryLetter>();
-            private readonly Form1 parent;
-
-            public FormData(Form1 parent)
-            {
-                this.parent = parent;
-            }
 
             public ActiveDictionary LoadedDictionary { get; private set; } = null;
-
             public bool DictionaryLoaded { get; private set; } = false;
-
-            public DictionaryLetter CurrentDictionaryLetter { get; private set; } = null;
 
             public DictionaryLetter GetDictionaryLetter(char letter)
             {
-                var cdl = letterData[letter];
-                CurrentDictionaryLetter = cdl;
-                return cdl;
+                return letterData[letter];
             }
 
             public void LoadDictionary(Stream dictStream)
             {
-                List<string> readWords = new List<string>();
-                using (StreamReader file = new StreamReader(dictStream))
-                {
-                    while (!file.EndOfStream)
-                    {
-                        readWords.Add(file.ReadLine());
-                    }
-                }
+                LoadedDictionary = Loader.LoadDictionary(dictStream);
+                DictionaryLoaded = true;
 
-                if (readWords.Count > 0)
+                foreach (DictionaryLetter dl in LoadedDictionary.GetAllDictionaryLetters())
                 {
-                    LoadedDictionary = new ActiveDictionary(readWords);
-                    DictionaryLoaded = true;
-                    parent.closeToolStripMenuItem.Enabled = DictionaryLoaded;
-
-                    foreach (char c in new Alphabet())
-                    {
-                        letterData[c] = DictionaryLetter.InitializeDictionaryLetter(c, LoadedDictionary);
-                    }
+                    letterData.Add(dl.Letter, dl);
                 }
             }
 
@@ -80,7 +57,7 @@ namespace DictionaryAssistant
         {
             InitializeComponent();
 
-            this.formData = new FormData(this);
+            this.formData = new FormData();
         }
 
         private void PopulateListBoxWithWords(ListBox listBox, Func<List<string>> wordGetter)
@@ -113,21 +90,31 @@ namespace DictionaryAssistant
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            try
             {
-                ofd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                ofd.FilterIndex = 1;
-
-                if (ofd.ShowDialog() == DialogResult.OK)
+                using (OpenFileDialog ofd = new OpenFileDialog())
                 {
-                    this.formData.LoadDictionary(ofd.OpenFile());
-                }
-            }
+                    ofd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                    ofd.FilterIndex = 1;
 
-            // Select the first item of `alphabetSelector` so the user sees something
-            if (this.formData.DictionaryLoaded)
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        this.formData.LoadDictionary(ofd.OpenFile());
+                    }
+                }
+
+                // Select the first item of `alphabetSelector` so the user sees something
+                if (this.formData.DictionaryLoaded)
+                {
+                    this.alphabetSelector.SelectedIndex = 0;
+                }
+
+                // Enable close menu item
+                this.closeToolStripMenuItem.Enabled = this.formData.DictionaryLoaded;
+            }
+            catch (FileLoadException flea)
             {
-                this.alphabetSelector.SelectedIndex = 0;
+                MessageBox.Show(this, flea.ToString(), "Unable to Load File!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

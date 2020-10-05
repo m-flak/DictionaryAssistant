@@ -1,11 +1,13 @@
-﻿using DictionaryAssistant.Exceptions;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DictionaryAssistantMVC.Dictionary.Exceptions;
 
-namespace DictionaryAssistant.Dictionary
+namespace DictionaryAssistantMVC.Dictionary
 {
     public class DictionaryLetter
     {
+        public char Letter { get; private set; }
         public int AverageCharacterCount { get; private set; }
         public int NumberWordsBeginningWith { get; private set; }
         public int NumberWordsEndingWith { get; private set; }
@@ -46,10 +48,17 @@ namespace DictionaryAssistant.Dictionary
                 endWith = words.Count;
             }
 
-            // Get the average character length of all the words that start with `letter`.
-            avgCount = wordsBeginWith.Aggregate(0, (acc, val) => acc + val.Length, avg => avg / wordsBeginWith.Count);
+            if (wordsBeginWith.Count > 0)
+            {
+                // Get the average character length of all the words that start with `letter`.
+                avgCount = wordsBeginWith.Aggregate(0, (acc, val) => acc + val.Length, avg => avg / wordsBeginWith.Count);
+            }
+            else
+            {
+                avgCount = 0;
+            }
 
-            return new DictionaryLetter(beginWith, endWith, avgCount, wordsBeginWith);
+            return new DictionaryLetter(letter, beginWith, endWith, avgCount, wordsBeginWith);
         }
 
         public List<string> GetLongestWords()
@@ -62,12 +71,24 @@ namespace DictionaryAssistant.Dictionary
             return WordsBeginningWith.Where(s => s.Length < AverageCharacterCount).ToList();
         }
 
-        protected DictionaryLetter(int beginWith, int endWith, int avgCount, List<string> wordsBeginingWith)
+        protected DictionaryLetter(char letter, int beginWith, int endWith, int avgCount, List<string> wordsBeginingWith)
         {
+            Letter = letter;
             AverageCharacterCount = avgCount;
             NumberWordsBeginningWith = beginWith;
             NumberWordsEndingWith = endWith;
             WordsBeginningWith = wordsBeginingWith;
+        }
+    }
+
+    internal class DictionaryLetterComparer : Comparer<DictionaryLetter>
+    {
+        public override int Compare(DictionaryLetter x, DictionaryLetter y)
+        {
+            char? letterX = x?.Letter;
+            char? letterY = y?.Letter;
+
+            return letterX.Value.CompareTo(letterY.Value);
         }
     }
 }

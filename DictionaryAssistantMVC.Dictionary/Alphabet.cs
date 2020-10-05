@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DictionaryAssistant.Dictionary
+
+namespace DictionaryAssistantMVC.Dictionary
 {
     public class Alphabet : IEnumerable<char>
     {
+        public const int AlphabetCount = 26;
+
         private readonly string alphabetLetters = "abcdefghijklmnopqrstuvwxyz";
         private class AlphabetEnumerator : IEnumerator<char>
         {

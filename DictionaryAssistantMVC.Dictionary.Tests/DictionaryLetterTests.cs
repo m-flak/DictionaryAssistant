@@ -5,13 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit;
 using NUnit.Framework;
-using DictionaryAssistant.Dictionary;
+using DictionaryAssistantMVC.Dictionary;
 
-namespace DictionaryAssistant.Tests
+namespace DictionaryAssistantMVC.Dictionary.Tests
 {
     [TestFixture]
     public class DictionaryLetterTests
     {
+        internal static IEnumerable<char> AlphabetChars = new Alphabet();
+
+        [TestCaseSource("AlphabetChars")]
+        public void AverageCharacterCountEmptyDictionaryTest(char alphabetLetter)
+        {
+            var eachLetter = DictionaryLetter.InitializeDictionaryLetter(alphabetLetter, new MockDictionary(new string[0]));
+
+            Assert.AreEqual(0, eachLetter.AverageCharacterCount);
+        }
+
         [TestCase('a', 5)]
         [TestCase('s', 5)]
         public void NumberBeginningWithLetterTest(char letter, int numberBegin)

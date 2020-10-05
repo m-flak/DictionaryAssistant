@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryAssistant", "DictionaryAssistant\DictionaryAssistant.csproj", "{4FFB6D22-1FBC-4F7B-A9AA-EDCF8BFADE3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryAssistant.Tests", "DictionaryAssistant.Tests\DictionaryAssistant.Tests.csproj", "{C061A0C3-275E-4228-936F-58532EE0C502}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryAssistantMVC.Dictionary", "DictionaryAssistantMVC.Dictionary\DictionaryAssistantMVC.Dictionary.csproj", "{0928DB12-24AB-4976-95B4-5AA30415C555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryAssistantMVC.Dictionary.Tests", "DictionaryAssistantMVC.Dictionary.Tests\DictionaryAssistantMVC.Dictionary.Tests.csproj", "{56A986D1-FDE6-43A8-A928-435AAB81E457}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0928DB12-24AB-4976-95B4-5AA30415C555} = {0928DB12-24AB-4976-95B4-5AA30415C555}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +22,14 @@ Global
 		{4FFB6D22-1FBC-4F7B-A9AA-EDCF8BFADE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FFB6D22-1FBC-4F7B-A9AA-EDCF8BFADE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FFB6D22-1FBC-4F7B-A9AA-EDCF8BFADE3C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C061A0C3-275E-4228-936F-58532EE0C502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C061A0C3-275E-4228-936F-58532EE0C502}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C061A0C3-275E-4228-936F-58532EE0C502}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C061A0C3-275E-4228-936F-58532EE0C502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0928DB12-24AB-4976-95B4-5AA30415C555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0928DB12-24AB-4976-95B4-5AA30415C555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0928DB12-24AB-4976-95B4-5AA30415C555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0928DB12-24AB-4976-95B4-5AA30415C555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A986D1-FDE6-43A8-A928-435AAB81E457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A986D1-FDE6-43A8-A928-435AAB81E457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A986D1-FDE6-43A8-A928-435AAB81E457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A986D1-FDE6-43A8-A928-435AAB81E457}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
